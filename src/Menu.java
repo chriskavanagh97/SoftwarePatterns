@@ -11,6 +11,7 @@ import java.util.Date;
 public class Menu extends JFrame{
     int Usernotfound  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
     int incorrectpassword  = JOptionPane.showConfirmDialog(null, null, "Incorrect password. Try again?", JOptionPane.YES_NO_OPTION);
+    boolean found = false, loop = true, loop2 = true;
 
     private ArrayList<Customer> customerList = new ArrayList<Customer>();
     private int position = 0;
@@ -136,13 +137,13 @@ public class Menu extends JFrame{
                                 public void actionPerformed(ActionEvent e) {
                                     f1.dispose();
 
-                                    boolean loop = true;
+
                                     while(loop){
                                         password = JOptionPane.showInputDialog(f, "Enter 7 character Password;");
 
                                         if(password.length() != 7)//Making sure password is 7 characters
                                         {
-                                            JOptionPane.showMessageDialog(null, null, "Password must be 7 charatcers long", JOptionPane.OK_OPTION);
+                                            JOptionPane.showMessageDialog(null, null, "Password must be 7 charatcers long", JOptionPane.ERROR_MESSAGE);
                                         }
                                         else
                                         {
@@ -189,7 +190,8 @@ public class Menu extends JFrame{
                 //if user select ADMIN----------------------------------------------------------------------------------------------
                 if(user.equals("Administrator")	)
                 {
-                    boolean loop = true, loop2 = true;
+                     loop = true;
+                     loop2 = true;
                     boolean cont = false;
                     while(loop)
                     {
@@ -197,9 +199,7 @@ public class Menu extends JFrame{
 
                         if(!adminUsername.equals("admin"))//search admin list for admin with matching admin username
                         {
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
+
 
                             if(Usernotfound == JOptionPane.NO_OPTION)
                             {
@@ -222,11 +222,6 @@ public class Menu extends JFrame{
                         if(!adminPassword.equals("admin11"))//search admin list for admin with matching admin password
                         {
 
-
-                            if (incorrectpassword == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-
                             if(incorrectpassword == JOptionPane.NO_OPTION){
                                 f1.dispose();
                                 loop2 = false;
@@ -243,7 +238,6 @@ public class Menu extends JFrame{
                     if(cont)
                     {
                         f1.dispose();
-                        loop = false;
                         admin();
                     }
                 }
@@ -254,9 +248,10 @@ public class Menu extends JFrame{
                 //if user selects CUSTOMER ----------------------------------------------------------------------------------------
                 if(user.equals("Customer")	)
                 {
-                    boolean loop = true, loop2 = true;
+                     loop = true;
+                     loop2 = true;
                     boolean cont = false;
-                    boolean found = false;
+                     found = false;
                     Customer customer = null;
                     while(loop)
                     {
@@ -271,13 +266,11 @@ public class Menu extends JFrame{
                             }
                         }
 
-                        if(found == false)
+                        if(!found)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
+
+                             if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -299,10 +292,8 @@ public class Menu extends JFrame{
                         if(!customer.getPassword().equals(customerPassword))//check if custoemr password is correct
                         {
 
-                            if (incorrectpassword == JOptionPane.YES_OPTION) {
 
-                            }
-                            else if(incorrectpassword == JOptionPane.NO_OPTION){
+                             if(incorrectpassword == JOptionPane.NO_OPTION){
                                 f.dispose();
                                 loop2 = false;
                                 menuStart();
@@ -318,8 +309,7 @@ public class Menu extends JFrame{
                     if(cont)
                     {
                         f.dispose();
-                        loop = false;
-                        customer(customer);
+                        customer();
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------
@@ -404,9 +394,7 @@ public class Menu extends JFrame{
         bankChargesButton.addActionListener(new ActionListener(  ) {
             public void actionPerformed(ActionEvent ae) {
 
-                boolean loop = true;
 
-                boolean found = false;
 
                 if(customerList.isEmpty())
                 {
@@ -431,13 +419,11 @@ public class Menu extends JFrame{
                             }
                         }
 
-                        if(found == false)
+                        if(!found)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
+
+                            if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -457,7 +443,7 @@ public class Menu extends JFrame{
                             f.setVisible(true);
 
 
-                            JComboBox<String> box = new JComboBox<String>();
+                            JComboBox<String> box = new JComboBox<>();
                             for (int i =0; i < customer.getAccounts().size(); i++)
                             {
 
@@ -473,14 +459,7 @@ public class Menu extends JFrame{
 
                             JPanel buttonPanel = new JPanel();
                             JButton continueButton = new JButton("Apply Charge");
-                            JButton returnButton = new JButton("Return");
-                            buttonPanel.add(continueButton);
-                            buttonPanel.add(returnButton);
-                            Container content = f.getContentPane();
-                            content.setLayout(new GridLayout(2, 1));
-
-                            content.add(boxPanel);
-                            content.add(buttonPanel);
+                            returbButton(boxPanel, buttonPanel, continueButton);
 
 
                             if(customer.getAccounts().isEmpty())
@@ -549,9 +528,7 @@ public class Menu extends JFrame{
         interestButton.addActionListener(new ActionListener(  ) {
             public void actionPerformed(ActionEvent ae) {
 
-                boolean loop = true;
 
-                boolean found = false;
 
                 if(customerList.isEmpty())
                 {
@@ -576,13 +553,10 @@ public class Menu extends JFrame{
                             }
                         }
 
-                        if(found == false)
+                        if(!found)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
+                             if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -602,7 +576,7 @@ public class Menu extends JFrame{
                             f.setVisible(true);
 
 
-                            JComboBox<String> box = new JComboBox<String>();
+                            JComboBox<String> box = new JComboBox<>();
                             for (int i =0; i < customer.getAccounts().size(); i++)
                             {
 
@@ -620,14 +594,8 @@ public class Menu extends JFrame{
                             boxPanel.add(box);
                             JPanel buttonPanel = new JPanel();
                             JButton continueButton = new JButton("Apply Interest");
-                            JButton returnButton = new JButton("Return");
-                            buttonPanel.add(continueButton);
-                            buttonPanel.add(returnButton);
-                            Container content = f.getContentPane();
-                            content.setLayout(new GridLayout(2, 1));
-
-                            content.add(boxPanel);
-                            content.add(buttonPanel);
+                            returbButton(boxPanel, buttonPanel, continueButton);
+                            JButton returnButton = null;
 
 
                             if(customer.getAccounts().isEmpty())
@@ -650,8 +618,8 @@ public class Menu extends JFrame{
                                 continueButton.addActionListener(new ActionListener(  ) {
                                     public void actionPerformed(ActionEvent ae) {
                                         String euro = "\u20ac";
-                                        double interest = 0;
-                                        boolean loop = true;
+                                        double interest ;
+
 
                                         while(loop)
                                         {
@@ -681,6 +649,7 @@ public class Menu extends JFrame{
                                     }
                                 });
 
+                                assert false;
                                 returnButton.addActionListener(new ActionListener(  ) {
                                     public void actionPerformed(ActionEvent ae) {
                                         f.dispose();
@@ -699,9 +668,7 @@ public class Menu extends JFrame{
         editCustomerButton.addActionListener(new ActionListener(  ) {
             public void actionPerformed(ActionEvent ae) {
 
-                boolean loop = true;
 
-                boolean found = false;
 
                 if(customerList.isEmpty())
                 {
@@ -726,13 +693,11 @@ public class Menu extends JFrame{
                             }
                         }
 
-                        if(found == false)
+                        if(!found)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
+
+                             if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -869,13 +834,11 @@ public class Menu extends JFrame{
                 JScrollPane scrollPane = new JScrollPane(textArea);
                 textPanel.add(scrollPane);
 
-                for (int a = 0; a < customerList.size(); a++)//For each customer, for each account, it displays each transaction.
-                {
-                    for (int b = 0; b < customerList.get(a).getAccounts().size(); b ++ )
-                    {
-                        acc = customerList.get(a).getAccounts().get(b);
-                        for (int c = 0; c < customerList.get(a).getAccounts().get(b).getTransactionList().size(); c++)
-                        {
+                //For each customer, for each account, it displays each transaction.
+                for (Customer value : customerList) {
+                    for (int b = 0; b < value.getAccounts().size(); b++) {
+                        acc = value.getAccounts().get(b);
+                        for (int c = 0; c < value.getAccounts().get(b).getTransactionList().size(); c++) {
 
                             textArea.append(acc.getTransactionList().get(c).toString());
                             //Int total = acc.getTransactionList().get(c).getAmount(); //I was going to use this to keep a running total but I couldnt get it  working.
@@ -1000,11 +963,9 @@ public class Menu extends JFrame{
                     previous.addActionListener(new ActionListener(  ) {
                         public void actionPerformed(ActionEvent ae) {
 
-                            if(position < 1)
-                            {
-                                //don't do anything
-                            }
-                            else
+
+
+                            if(position >= 1)
                             {
                                 position = position - 1;
 
@@ -1021,11 +982,7 @@ public class Menu extends JFrame{
                     next.addActionListener(new ActionListener(  ) {
                         public void actionPerformed(ActionEvent ae) {
 
-                            if(position == customerList.size()-1)
-                            {
-                                //don't do anything
-                            }
-                            else
+                            if(!(position == customerList.size()-1))
                             {
                                 position = position + 1;
 
@@ -1081,9 +1038,7 @@ public class Menu extends JFrame{
                 }
                 else
                 {
-                    boolean loop = true;
 
-                    boolean found = false;
 
                     while(loop)
                     {
@@ -1098,13 +1053,10 @@ public class Menu extends JFrame{
                             }
                         }
 
-                        if(found == false)
+                        if(!found)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
+                             if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -1123,14 +1075,14 @@ public class Menu extends JFrame{
                             if(account.equals("Current Account"))
                             {
                                 //create current account
-                                boolean valid = true;
+
                                 double balance = 0;
-                                String number = String.valueOf("C" + (customerList.indexOf(customer)+1) * 10 + (customer.getAccounts().size()+1));//this simple algorithm generates the account number
-                                ArrayList<AccountTransaction> transactionList = new ArrayList<AccountTransaction>();
+                                String number = "C" + (customerList.indexOf(customer) + 1) * 10 + (customer.getAccounts().size() + 1);//this simple algorithm generates the account number
+                                ArrayList<AccountTransaction> transactionList = new ArrayList<>();
                                 int randomPIN = (int)(Math.random()*9000)+1000;
                                 String pin = String.valueOf(randomPIN);
 
-                                ATMCard atm = new ATMCard(randomPIN, valid);
+                                ATMCard atm = new ATMCard(randomPIN, true);
 
                                 CustomerCurrentAccount current = new CustomerCurrentAccount(atm, number, balance, transactionList);
 
@@ -1146,8 +1098,8 @@ public class Menu extends JFrame{
                                 //create deposit account
 
                                 double balance = 0, interest = 0;
-                                String number = String.valueOf("D" + (customerList.indexOf(customer)+1) * 10 + (customer.getAccounts().size()+1));//this simple algorithm generates the account number
-                                ArrayList<AccountTransaction> transactionList = new ArrayList<AccountTransaction>();
+                                String number = "D" + (customerList.indexOf(customer) + 1) * 10 + (customer.getAccounts().size() + 1);//this simple algorithm generates the account number
+                                ArrayList<AccountTransaction> transactionList = new ArrayList<>();
 
                                 CustomerDepositAccount deposit = new CustomerDepositAccount(interest, number, balance, transactionList);
 
@@ -1166,7 +1118,7 @@ public class Menu extends JFrame{
 
         deleteCustomer.addActionListener(new ActionListener(  ) {
             public void actionPerformed(ActionEvent ae) {
-                boolean found = true, loop = true;
+
 
                 if(customerList.isEmpty())
                 {
@@ -1185,23 +1137,19 @@ public class Menu extends JFrame{
                             {
                                 found = true;
                                 customer = aCustomer;
-                                loop = false;
+
                             }
                         }
 
-                        if(found == false)
+                        if(!found & Usernotfound == JOptionPane.NO_OPTION)
                         {
 
-                            if (Usernotfound == JOptionPane.YES_OPTION) {
-                                loop = true;
-                            }
-                            else if(Usernotfound == JOptionPane.NO_OPTION)
-                            {
+
+
                                 f.dispose();
                                 loop = false;
-
                                 admin();
-                            }
+
                         }
                         else
                         {
@@ -1223,9 +1171,6 @@ public class Menu extends JFrame{
 
         deleteAccount.addActionListener(new ActionListener(  ) {
             public void actionPerformed(ActionEvent ae) {
-                boolean found = true, loop = true;
-
-
 
 
                 {
@@ -1241,7 +1186,7 @@ public class Menu extends JFrame{
                         }
                     }
 
-                    if(found == false)
+                    if(!found)
                     {
 
                         if (Usernotfound == JOptionPane.YES_OPTION) {
@@ -1255,10 +1200,7 @@ public class Menu extends JFrame{
                             admin();
                         }
                     }
-                    else
-                    {
-                        //Here I would make the user select a an account to delete from a combo box. If the account had a balance of 0 then it would be deleted. (I do not have time to do this)
-                    }
+
 
 
                 }}
@@ -1272,10 +1214,21 @@ public class Menu extends JFrame{
         });
     }
 
-    public void customer(Customer e1)
+    private void returbButton(JPanel boxPanel, JPanel buttonPanel, JButton continueButton) {
+        JButton returnButton = new JButton("Return");
+        buttonPanel.add(continueButton);
+        buttonPanel.add(returnButton);
+        Container content = f.getContentPane();
+        content.setLayout(new GridLayout(2, 1));
+
+        content.add(boxPanel);
+        content.add(buttonPanel);
+    }
+
+    public void customer()
     {
         f = new JFrame("Customer Menu");
-        e1 = e;
+        Customer e1 = e;
         f.setSize(400, 300);
         f.setLocation(200, 200);
         f.addWindowListener(new WindowAdapter() {
@@ -1428,7 +1381,7 @@ public class Menu extends JFrame{
                             returnButton.addActionListener(new ActionListener(  ) {
                                 public void actionPerformed(ActionEvent ae) {
                                     f.dispose();
-                                    customer(e);
+                                    customer();
                                 }
                             });
                         }
@@ -1436,7 +1389,7 @@ public class Menu extends JFrame{
 
                     lodgementButton.addActionListener(new ActionListener(  ) {
                         public void actionPerformed(ActionEvent ae) {
-                            boolean loop = true;
+
                             boolean on = true;
                             double balance = 0;
 
@@ -1452,7 +1405,7 @@ public class Menu extends JFrame{
                                     {
                                         JOptionPane.showMessageDialog(f, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
                                         ((CustomerCurrentAccount) acc).getAtm().setValid(false);
-                                        customer(e);
+                                        customer();
                                         loop = false;
                                         on = false;
                                     }
@@ -1518,7 +1471,7 @@ public class Menu extends JFrame{
 
                     withdrawButton.addActionListener(new ActionListener(  ) {
                         public void actionPerformed(ActionEvent ae) {
-                            boolean loop = true;
+
                             boolean on = true;
                             double withdraw = 0;
 
@@ -1534,7 +1487,7 @@ public class Menu extends JFrame{
                                     {
                                         JOptionPane.showMessageDialog(f, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
                                         ((CustomerCurrentAccount) acc).getAtm().setValid(false);
-                                        customer(e);
+                                        customer();
                                         loop = false;
                                         on = false;
                                     }
