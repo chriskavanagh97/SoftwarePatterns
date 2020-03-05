@@ -104,14 +104,7 @@ public class Menu extends JFrame{
                     pPSTextField = new JTextField(20);
                     dOBTextField = new JTextField(20);
                     JPanel panel = new JPanel(new GridLayout(6, 2));
-                    panel.add(firstNameLabel);
-                    panel.add(firstNameTextField);
-                    panel.add(surnameLabel);
-                    panel.add(surnameTextField);
-                    panel.add(pPPSLabel);
-                    panel.add(pPSTextField);
-                    panel.add(dOBLabel);
-                    panel.add(dOBTextField);
+                    panelAdditions(panel);
 
                     panel2 = new JPanel();
                     add = new JButton("Add");
@@ -141,7 +134,7 @@ public class Menu extends JFrame{
                                     while(loop){
                                         password = JOptionPane.showInputDialog(f, "Enter 7 character Password;");
 
-                                        if(password.length() != 7)//Making sure password is 7 characters
+                                        if(password.length() < 7)//Making sure password is 7 characters
                                         {
                                             JOptionPane.showMessageDialog(null, null, "Password must be 7 charatcers long", JOptionPane.ERROR_MESSAGE);
                                         }
@@ -317,6 +310,16 @@ public class Menu extends JFrame{
         });f.setVisible(true);
     }
 
+    public void panelAdditions(JPanel panel) {
+        panel.add(firstNameLabel);
+        panel.add(firstNameTextField);
+        panel.add(surnameLabel);
+        panel.add(surnameTextField);
+        panel.add(pPPSLabel);
+        panel.add(pPSTextField);
+        panel.add(dOBLabel);
+        panel.add(dOBTextField);
+    }
 
 
     public void admin()
@@ -722,31 +725,13 @@ public class Menu extends JFrame{
                         public void windowClosing(WindowEvent we) { System.exit(0); }
                     });
 
-                    firstNameLabel = new JLabel("First Name:", SwingConstants.LEFT);
-                    surnameLabel = new JLabel("Surname:", SwingConstants.LEFT);
-                    pPPSLabel = new JLabel("PPS Number:", SwingConstants.LEFT);
-                    dOBLabel = new JLabel("Date of birth", SwingConstants.LEFT);
-                    customerIDLabel = new JLabel("CustomerID:", SwingConstants.LEFT);
-                    passwordLabel = new JLabel("Password:", SwingConstants.LEFT);
-                    firstNameTextField = new JTextField(20);
-                    surnameTextField = new JTextField(20);
-                    pPSTextField = new JTextField(20);
-                    dOBTextField = new JTextField(20);
-                    customerIDTextField = new JTextField(20);
-                    passwordTextField = new JTextField(20);
+                    labelcreation();
 
                     JPanel textPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
                     JPanel cancelPanel = new JPanel();
 
-                    textPanel.add(firstNameLabel);
-                    textPanel.add(firstNameTextField);
-                    textPanel.add(surnameLabel);
-                    textPanel.add(surnameTextField);
-                    textPanel.add(pPPSLabel);
-                    textPanel.add(pPSTextField);
-                    textPanel.add(dOBLabel);
-                    textPanel.add(dOBTextField);
+                    panelAdditions(textPanel);
                     textPanel.add(customerIDLabel);
                     textPanel.add(customerIDTextField);
                     textPanel.add(passwordLabel);
@@ -856,9 +841,9 @@ public class Menu extends JFrame{
 
                 Container content = f.getContentPane();
                 content.setLayout(new GridLayout(1, 1));
-                //	content.add(label1);
+                	content.add(label1);
                 content.add(textPanel);
-                //content.add(returnPanel);
+                content.add(returnPanel);
 
                 returnButton.addActionListener(new ActionListener(  ) {
                     public void actionPerformed(ActionEvent ae) {
@@ -892,18 +877,7 @@ public class Menu extends JFrame{
                     gridPanel = new JPanel(new GridLayout(8, 2));
                     cancelPanel = new JPanel();
 
-                    firstNameLabel = new JLabel("First Name:", SwingConstants.LEFT);
-                    surnameLabel = new JLabel("Surname:", SwingConstants.LEFT);
-                    pPPSLabel = new JLabel("PPS Number:", SwingConstants.LEFT);
-                    dOBLabel = new JLabel("Date of birth", SwingConstants.LEFT);
-                    customerIDLabel = new JLabel("CustomerID:", SwingConstants.LEFT);
-                    passwordLabel = new JLabel("Password:", SwingConstants.LEFT);
-                    firstNameTextField = new JTextField(20);
-                    surnameTextField = new JTextField(20);
-                    pPSTextField = new JTextField(20);
-                    dOBTextField = new JTextField(20);
-                    customerIDTextField = new JTextField(20);
-                    passwordTextField = new JTextField(20);
+                    labelcreation();
 
                     first = new JButton("First");
                     previous = new JButton("Previous");
@@ -911,12 +885,7 @@ public class Menu extends JFrame{
                     last = new JButton("Last");
                     cancel = new JButton("Cancel");
 
-                    firstNameTextField.setText(customerList.get(0).getFirstName());
-                    surnameTextField.setText(customerList.get(0).getSurname());
-                    pPSTextField.setText(customerList.get(0).getPPS());
-                    dOBTextField.setText(customerList.get(0).getDOB());
-                    customerIDTextField.setText(customerList.get(0).getCustomerID());
-                    passwordTextField.setText(customerList.get(0).getPassword());
+                    setFirst();
 
                     firstNameTextField.setEditable(false);
                     surnameTextField.setEditable(false);
@@ -925,14 +894,7 @@ public class Menu extends JFrame{
                     customerIDTextField.setEditable(false);
                     passwordTextField.setEditable(false);
 
-                    gridPanel.add(firstNameLabel);
-                    gridPanel.add(firstNameTextField);
-                    gridPanel.add(surnameLabel);
-                    gridPanel.add(surnameTextField);
-                    gridPanel.add(pPPSLabel);
-                    gridPanel.add(pPSTextField);
-                    gridPanel.add(dOBLabel);
-                    gridPanel.add(dOBTextField);
+                    panelAdditions(gridPanel);
                     gridPanel.add(customerIDLabel);
                     gridPanel.add(customerIDTextField);
                     gridPanel.add(passwordLabel);
@@ -951,12 +913,7 @@ public class Menu extends JFrame{
                     first.addActionListener(new ActionListener(  ) {
                         public void actionPerformed(ActionEvent ae) {
                             position = 0;
-                            firstNameTextField.setText(customerList.get(0).getFirstName());
-                            surnameTextField.setText(customerList.get(0).getSurname());
-                            pPSTextField.setText(customerList.get(0).getPPS());
-                            dOBTextField.setText(customerList.get(0).getDOB());
-                            customerIDTextField.setText(customerList.get(0).getCustomerID());
-                            passwordTextField.setText(customerList.get(0).getPassword());
+                            setFirst();
                         }
                     });
 
@@ -969,12 +926,7 @@ public class Menu extends JFrame{
                             {
                                 position = position - 1;
 
-                                firstNameTextField.setText(customerList.get(position).getFirstName());
-                                surnameTextField.setText(customerList.get(position).getSurname());
-                                pPSTextField.setText(customerList.get(position).getPPS());
-                                dOBTextField.setText(customerList.get(position).getDOB());
-                                customerIDTextField.setText(customerList.get(position).getCustomerID());
-                                passwordTextField.setText(customerList.get(position).getPassword());
+                                setCustomer();
                             }
                         }
                     });
@@ -986,12 +938,7 @@ public class Menu extends JFrame{
                             {
                                 position = position + 1;
 
-                                firstNameTextField.setText(customerList.get(position).getFirstName());
-                                surnameTextField.setText(customerList.get(position).getSurname());
-                                pPSTextField.setText(customerList.get(position).getPPS());
-                                dOBTextField.setText(customerList.get(position).getDOB());
-                                customerIDTextField.setText(customerList.get(position).getCustomerID());
-                                passwordTextField.setText(customerList.get(position).getPassword());
+                                setCustomer();
                             }
 
 
@@ -1004,12 +951,7 @@ public class Menu extends JFrame{
 
                             position = customerList.size() - 1;
 
-                            firstNameTextField.setText(customerList.get(position).getFirstName());
-                            surnameTextField.setText(customerList.get(position).getSurname());
-                            pPSTextField.setText(customerList.get(position).getPPS());
-                            dOBTextField.setText(customerList.get(position).getDOB());
-                            customerIDTextField.setText(customerList.get(position).getCustomerID());
-                            passwordTextField.setText(customerList.get(position).getPassword());
+                            setCustomer();
                         }
                     });
 
@@ -1212,6 +1154,39 @@ public class Menu extends JFrame{
                 menuStart();
             }
         });
+    }
+
+    private void setCustomer() {
+        firstNameTextField.setText(customerList.get(position).getFirstName());
+        surnameTextField.setText(customerList.get(position).getSurname());
+        pPSTextField.setText(customerList.get(position).getPPS());
+        dOBTextField.setText(customerList.get(position).getDOB());
+        customerIDTextField.setText(customerList.get(position).getCustomerID());
+        passwordTextField.setText(customerList.get(position).getPassword());
+    }
+
+    private void setFirst() {
+        firstNameTextField.setText(customerList.get(0).getFirstName());
+        surnameTextField.setText(customerList.get(0).getSurname());
+        pPSTextField.setText(customerList.get(0).getPPS());
+        dOBTextField.setText(customerList.get(0).getDOB());
+        customerIDTextField.setText(customerList.get(0).getCustomerID());
+        passwordTextField.setText(customerList.get(0).getPassword());
+    }
+
+    private void labelcreation() {
+        firstNameLabel = new JLabel("First Name:", SwingConstants.LEFT);
+        surnameLabel = new JLabel("Surname:", SwingConstants.LEFT);
+        pPPSLabel = new JLabel("PPS Number:", SwingConstants.LEFT);
+        dOBLabel = new JLabel("Date of birth", SwingConstants.LEFT);
+        customerIDLabel = new JLabel("CustomerID:", SwingConstants.LEFT);
+        passwordLabel = new JLabel("Password:", SwingConstants.LEFT);
+        firstNameTextField = new JTextField(20);
+        surnameTextField = new JTextField(20);
+        pPSTextField = new JTextField(20);
+        dOBTextField = new JTextField(20);
+        customerIDTextField = new JTextField(20);
+        passwordTextField = new JTextField(20);
     }
 
     private void returbButton(JPanel boxPanel, JPanel buttonPanel, JButton continueButton) {
