@@ -271,6 +271,7 @@ public class Menu extends JFrame{
                 if(cont)
                 {
                     f.dispose();
+                    e = customer;
                     customer();
                 }
             }
