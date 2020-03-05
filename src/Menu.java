@@ -1293,8 +1293,8 @@ public class Menu extends JFrame{
                         AccountTransaction transaction = new AccountTransaction(date2, type, amount);
                         acc.getTransactionList().add(transaction);
 
-                        JOptionPane.showMessageDialog(f, balance + euro + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(f,   euro + balance + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(f, "New balance = "  +  euro + acc.getBalance(),"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 });
