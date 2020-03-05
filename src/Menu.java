@@ -863,7 +863,8 @@ public class Menu extends JFrame{
             else
             {
 
-
+                loop = true;
+                found = false;
                 while(loop)
                 {
                     Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Add an Account to:");
@@ -1088,7 +1089,7 @@ public class Menu extends JFrame{
 
         if(e.getAccounts().size() == 0)
         {
-            JOptionPane.showMessageDialog(f, "This customer does not have any accounts yet. \n An admin must create an account for this customer \n for them to be able to use customer functionality. " ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "This customer does not have any accounts yet. \n An admin must create an account for this customer \n for them to be able to use customer functionality. " ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
             f.dispose();
             menuStart();
         }
