@@ -131,8 +131,9 @@ public class Menu extends JFrame{
                         customerList.add(customer);
 
                         JOptionPane.showMessageDialog(f, "CustomerID = " + CustomerID +"\n Password = " + password  ,"Customer created.",  JOptionPane.INFORMATION_MESSAGE);
-                        menuStart();
                         f.dispose();
+                        menuStart();
+
                     });
                 });
                 JButton cancel = new JButton("Cancel");
@@ -212,7 +213,7 @@ public class Menu extends JFrame{
                  loop = true;
                  loop2 = true;
                 boolean cont = false;
-                 found = false;
+
                 Customer customer = null;
                 while(loop)
                 {
@@ -227,7 +228,7 @@ public class Menu extends JFrame{
                         }
                     }
 
-                    if(!found)
+                    if(found = false)
                     {
 
                          if(Usernotfound == JOptionPane.NO_OPTION)
@@ -395,14 +396,7 @@ public class Menu extends JFrame{
                     }
                     else
                     {
-                        f.dispose();
-                        f = new JFrame("Administrator Menu");
-                        f.setSize(400, 300);
-                        f.setLocation(200, 200);
-                        f.addWindowListener(new WindowAdapter() {
-                            public void windowClosing(WindowEvent we) { System.exit(0); }
-                        });
-                        f.setVisible(true);
+                       fdispose();
 
 
                         JComboBox<String> box = new JComboBox<>();
@@ -515,14 +509,7 @@ public class Menu extends JFrame{
                     }
                     else
                     {
-                        f.dispose();
-                        f = new JFrame("Administrator Menu");
-                        f.setSize(400, 300);
-                        f.setLocation(200, 200);
-                        f.addWindowListener(new WindowAdapter() {
-                            public void windowClosing(WindowEvent we) { System.exit(0); }
-                        });
-                        f.setVisible(true);
+                       fdispose();
 
 
                         JComboBox<String> box = new JComboBox<>();
@@ -1024,6 +1011,17 @@ public class Menu extends JFrame{
             f.dispose();
             menuStart();
         });
+    }
+    private void fdispose(){
+        f.dispose();
+        f = new JFrame("Administrator Menu");
+        f.setSize(400, 300);
+        f.setLocation(200, 200);
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) { System.exit(0); }
+        });
+        f.setVisible(true);
+
     }
 
     private void setCustomer() {
