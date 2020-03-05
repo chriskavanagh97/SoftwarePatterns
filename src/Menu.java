@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.util.Date;
 
 public class Menu extends JFrame{
+    int Usernotfound  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
+    int incorrectpassword  = JOptionPane.showConfirmDialog(null, null, "Incorrect password. Try again?", JOptionPane.YES_NO_OPTION);
 
     private ArrayList<Customer> customerList = new ArrayList<Customer>();
     private int position = 0;
@@ -151,7 +153,7 @@ public class Menu extends JFrame{
 
 
 
-                                    ArrayList<CustomerAccount> accounts = new ArrayList<CustomerAccount> ();
+                                    ArrayList<CustomerAccount> accounts = new ArrayList<> ();
                                     Customer customer = new Customer(PPS, surname, firstName, DOB, CustomerID, password, accounts);
 
                                     customerList.add(customer);
@@ -195,11 +197,11 @@ public class Menu extends JFrame{
 
                         if(!adminUsername.equals("admin"))//search admin list for admin with matching admin username
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect Username. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+
+                            if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f1.dispose();
                                 loop = false;
@@ -219,11 +221,13 @@ public class Menu extends JFrame{
 
                         if(!adminPassword.equals("admin11"))//search admin list for admin with matching admin password
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect Password. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
 
+
+                            if (incorrectpassword == JOptionPane.YES_OPTION) {
+                                loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION){
+
+                            if(incorrectpassword == JOptionPane.NO_OPTION){
                                 f1.dispose();
                                 loop2 = false;
                                 menuStart();
@@ -269,11 +273,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -294,11 +298,11 @@ public class Menu extends JFrame{
 
                         if(!customer.getPassword().equals(customerPassword))//check if custoemr password is correct
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect password. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (incorrectpassword == JOptionPane.YES_OPTION) {
 
                             }
-                            else if(reply == JOptionPane.NO_OPTION){
+                            else if(incorrectpassword == JOptionPane.NO_OPTION){
                                 f.dispose();
                                 loop2 = false;
                                 menuStart();
@@ -429,11 +433,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -574,11 +578,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -724,11 +728,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -1096,11 +1100,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -1187,11 +1191,11 @@ public class Menu extends JFrame{
 
                         if(found == false)
                         {
-                            int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                            if (reply == JOptionPane.YES_OPTION) {
+
+                            if (Usernotfound == JOptionPane.YES_OPTION) {
                                 loop = true;
                             }
-                            else if(reply == JOptionPane.NO_OPTION)
+                            else if(Usernotfound == JOptionPane.NO_OPTION)
                             {
                                 f.dispose();
                                 loop = false;
@@ -1239,11 +1243,11 @@ public class Menu extends JFrame{
 
                     if(found == false)
                     {
-                        int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                        if (reply == JOptionPane.YES_OPTION) {
+
+                        if (Usernotfound == JOptionPane.YES_OPTION) {
                             loop = true;
                         }
-                        else if(reply == JOptionPane.NO_OPTION)
+                        else if(Usernotfound == JOptionPane.NO_OPTION)
                         {
                             f.dispose();
                             loop = false;
