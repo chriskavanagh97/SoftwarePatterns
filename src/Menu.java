@@ -109,7 +109,6 @@ public class Menu extends JFrame{
 
                     CustomerID = "ID"+PPS ;
 
-                    add.addActionListener(e1 -> {
                         f1.dispose();
 
                         while(loop){
@@ -135,7 +134,7 @@ public class Menu extends JFrame{
                         menuStart();
 
                     });
-                });
+
                 JButton cancel = new JButton("Cancel");
                 cancel.addActionListener(e -> {
                     f1.dispose();
