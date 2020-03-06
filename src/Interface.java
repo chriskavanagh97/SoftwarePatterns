@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Interface {
+public interface Interface {
 
-    private ArrayList<Customer> customerList = new ArrayList<Customer>();
+    public ArrayList<Customer> customerList = new ArrayList<Customer>();
 }

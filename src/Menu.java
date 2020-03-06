@@ -4,12 +4,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Date;
-public class Menu extends JFrame{
+public class Menu extends JFrame implements Interface{
 
 
     boolean found = false, loop = true, loop2 = true;
 
-    private ArrayList<Customer> customerList = new ArrayList<Customer>();
     private int position = 0;
     private String password;
     private Customer customer = null;
@@ -154,57 +153,7 @@ public class Menu extends JFrame{
             //if user select ADMIN----------------------------------------------------------------------------------------------
             if(user.equals("Administrator")	)
             {
-                 loop = true;
-                 loop2 = true;
-                boolean cont = false;
-                while(loop)
-                {
-                    Object adminUsername = JOptionPane.showInputDialog(f, "Enter Administrator Username:");
-
-                    if(!adminUsername.equals("admin"))//search admin list for admin with matching admin username
-                    {
-
-                        int Usernotfound  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-                        if(Usernotfound == JOptionPane.NO_OPTION)
-                        {
-                            f1.dispose();
-                            loop = false;
-                            loop2 = false;
-                            menuStart();
-                        }
-                    }
-                    else
-                    {
-                        loop = false;
-                    }
-                }
-
-
-                while(loop2)
-                {
-                    Object adminPassword = JOptionPane.showInputDialog(f, "Enter Administrator Password;");
-
-                    if(!adminPassword.equals("admin11"))//search admin list for admin with matching admin password
-                    {
-                        int incorrectpassword  = JOptionPane.showConfirmDialog(null, null, "Incorrect password. Try again?", JOptionPane.YES_NO_OPTION);
-                        if(incorrectpassword == JOptionPane.NO_OPTION){
-                            f1.dispose();
-                            loop2 = false;
-                            menuStart();
-                        }
-                    }
-                    else
-                    {
-                        loop2 = false;
-                        cont = true;
-                    }
-                }
-
-                if(cont)
-                {
-                    //f1.dispose();
-                    admin();
-                }
+                new Admin();
             }
 
             //if user selects CUSTOMER ----------------------------------------------------------------------------------------
@@ -362,7 +311,7 @@ public class Menu extends JFrame{
 
         bankChargesButton.addActionListener(ae -> {
 
-         
+
         });
 
         interestButton.addActionListener(ae -> {
