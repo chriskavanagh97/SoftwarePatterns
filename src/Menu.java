@@ -130,7 +130,7 @@ public class Menu extends JFrame{
 
                         customerList.add(customer);
 
-                        JOptionPane.showMessageDialog(f, "CustomerID = " + CustomerID +"\n Password = " + password  ,"Customer created.",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "CustomerID = " + CustomerID +"\n Password = " + password  ,"Customer created.",  JOptionPane.INFORMATION_MESSAGE);
                         f.dispose();
                         menuStart();
 
@@ -365,7 +365,7 @@ public class Menu extends JFrame{
 
             if(customerList.isEmpty())
             {
-                JOptionPane.showMessageDialog(f, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                 f.dispose();
                 admin();
 
@@ -374,7 +374,7 @@ public class Menu extends JFrame{
             {
                 while(loop)
                 {
-                    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Charges to:");
+                    Object customerID = JOptionPane.showInputDialog(null, "Customer ID of Customer You Wish to Apply Charges to:");
 
                     for (Customer aCustomer: customerList){
 
@@ -418,12 +418,12 @@ public class Menu extends JFrame{
 
                         JPanel buttonPanel = new JPanel();
                         JButton continueButton = new JButton("Apply Charge");
-                        returbButton(boxPanel, buttonPanel, continueButton);
+                        returnbutton(boxPanel, buttonPanel, continueButton);
 
 
                         if(customer.getAccounts().isEmpty())
                         {
-                            JOptionPane.showMessageDialog(f, "This customer has no accounts! \n The admin must add acounts to this customer."   ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "This customer has no accounts! \n The admin must add acounts to this customer."   ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                             f.dispose();
                             admin();
                         }
@@ -445,18 +445,18 @@ public class Menu extends JFrame{
                                 if(acc instanceof CustomerDepositAccount)
                                 {
 
-                                    JOptionPane.showMessageDialog(f, "25" + euro + " deposit account fee aplied."  ,"",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "25" + euro + " deposit account fee aplied."  ,"",  JOptionPane.INFORMATION_MESSAGE);
                                     acc.setBalance(acc.getBalance()-25);
-                                    JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "New balance = " + acc.getBalance() ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
                                 }
 
                                 if(acc instanceof CustomerCurrentAccount)
                                 {
 
 
-                                    JOptionPane.showMessageDialog(f, "15" + euro + " current account fee aplied."  ,"",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "15" + euro + " current account fee aplied."  ,"",  JOptionPane.INFORMATION_MESSAGE);
                                     acc.setBalance(acc.getBalance()-25);
-                                    JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "New balance = " + acc.getBalance() ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
                                 }
 
                                 f.dispose();
@@ -478,7 +478,7 @@ public class Menu extends JFrame{
 
             if(customerList.isEmpty())
             {
-                JOptionPane.showMessageDialog(f, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                 f.dispose();
                 admin();
 
@@ -487,7 +487,7 @@ public class Menu extends JFrame{
             {
                 while(loop)
                 {
-                    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Interest to:");
+                    Object customerID = JOptionPane.showInputDialog(null, "Customer ID of Customer You Wish to Apply Interest to:");
 
                     for (Customer aCustomer: customerList){
 
@@ -531,13 +531,13 @@ public class Menu extends JFrame{
                         boxPanel.add(box);
                         JPanel buttonPanel = new JPanel();
                         JButton continueButton = new JButton("Apply Interest");
-                        returbButton(boxPanel, buttonPanel, continueButton);
+                        returnbutton(boxPanel, buttonPanel, continueButton);
                         JButton returnButton1 = null;
 
 
                         if(customer.getAccounts().isEmpty())
                         {
-                            JOptionPane.showMessageDialog(f, "This customer has no accounts! \n The admin must add acounts to this customer."   ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "This customer has no accounts! \n The admin must add acounts to this customer."   ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                             f.dispose();
                             admin();
                         }
@@ -556,7 +556,7 @@ public class Menu extends JFrame{
                                 double interest ;
                                 while(loop)
                                 {
-                                    String interestString = JOptionPane.showInputDialog(f, "Enter interest percentage you wish to apply: \n NOTE: Please enter a numerical value. (with no percentage sign) \n E.g: If you wish to apply 8% interest, enter '8'");//the isNumeric method tests to see if the string entered was numeric.
+                                    String interestString = JOptionPane.showInputDialog(null, "Enter interest percentage you wish to apply: \n NOTE: Please enter a numerical value. (with no percentage sign) \n E.g: If you wish to apply 8% interest, enter '8'");//the isNumeric method tests to see if the string entered was numeric.
                                     if(isNumeric(interestString))
                                     {
 
@@ -565,13 +565,13 @@ public class Menu extends JFrame{
 
                                         acc.setBalance(acc.getBalance() + (acc.getBalance() * (interest/100)));
 
-                                        JOptionPane.showMessageDialog(f, interest + "% interest applied. \n new balance = " + acc.getBalance() + euro ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, interest + "% interest applied. \n new balance = " + acc.getBalance() + euro ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
                                     }
 
 
                                     else
                                     {
-                                        JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                                     }
 
 
@@ -600,7 +600,7 @@ public class Menu extends JFrame{
 
             if(customerList.isEmpty())
             {
-                JOptionPane.showMessageDialog(f, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                 f.dispose();
                 admin();
 
@@ -857,7 +857,7 @@ public class Menu extends JFrame{
 
             if(customerList.isEmpty())
             {
-                JOptionPane.showMessageDialog(f, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                 f.dispose();
                 admin();
             }
@@ -912,7 +912,7 @@ public class Menu extends JFrame{
                             CustomerCurrentAccount current = new CustomerCurrentAccount(atm, number, balance, transactionList);
 
                             customer.getAccounts().add(current);
-                            JOptionPane.showMessageDialog(f, "Account number = " + number +"\n PIN = " + pin  ,"Account created.",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Account number = " + number +"\n PIN = " + pin  ,"Account created.",  JOptionPane.INFORMATION_MESSAGE);
 
                             f.dispose();
                             admin();
@@ -928,7 +928,7 @@ public class Menu extends JFrame{
                             CustomerDepositAccount deposit = new CustomerDepositAccount(interest, number, balance, transactionList);
 
                             customer.getAccounts().add(deposit);
-                            JOptionPane.showMessageDialog(f, "Account number = " + number ,"Account created.",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Account number = " + number ,"Account created.",  JOptionPane.INFORMATION_MESSAGE);
 
                             f.dispose();
                             admin();
@@ -977,12 +977,12 @@ public class Menu extends JFrame{
                     {
                         if(customer.getAccounts().size()>0)
                         {
-                            JOptionPane.showMessageDialog(f, "This customer has accounts. \n You must delete a customer's accounts before deleting a customer " ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "This customer has accounts. \n You must delete a customer's accounts before deleting a customer " ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
                             customerList.remove(customer);
-                            JOptionPane.showMessageDialog(f, "Customer Deleted " ,"Success.",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Customer Deleted " ,"Success.",  JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
 
@@ -1067,7 +1067,7 @@ public class Menu extends JFrame{
         passwordTextField = new JTextField(20);
     }
 
-    private void returbButton(JPanel boxPanel, JPanel buttonPanel, JButton continueButton) {
+    private void returnbutton(JPanel boxPanel, JPanel buttonPanel, JButton continueButton) {
         JButton returnButton = new JButton("Return");
         buttonPanel.add(continueButton);
         buttonPanel.add(returnButton);
@@ -1237,7 +1237,7 @@ public class Menu extends JFrame{
                         {
                             if(count == 0)
                             {
-                                JOptionPane.showMessageDialog(f, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
                                 ((CustomerCurrentAccount) acc).getAtm().setValid(false);
                                 customer();
                                 loop = false;
@@ -1252,13 +1252,13 @@ public class Menu extends JFrame{
                                 if(checkPin == i)
                                 {
                                     loop = false;
-                                    JOptionPane.showMessageDialog(f, "Pin entry successful" ,  "Pin", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Pin entry successful" ,  "Pin", JOptionPane.INFORMATION_MESSAGE);
 
                                 }
                                 else
                                 {
                                     count --;
-                                    JOptionPane.showMessageDialog(f, "Incorrect pin. " + count + " attempts remaining."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Incorrect pin. " + count + " attempts remaining."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
                                 }
 
                             }
@@ -1276,7 +1276,7 @@ public class Menu extends JFrame{
                                                             }
                         else
                         {
-                            JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                         }
 
                         String euro = "\u20ac";
@@ -1293,8 +1293,8 @@ public class Menu extends JFrame{
                         AccountTransaction transaction = new AccountTransaction(date2, type, amount);
                         acc.getTransactionList().add(transaction);
 
-                        JOptionPane.showMessageDialog(f,   euro + balance + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(f, "New balance = "  +  euro + acc.getBalance(),"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,   euro + balance + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "New balance = "  +  euro + acc.getBalance(),"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 });
@@ -1314,7 +1314,7 @@ public class Menu extends JFrame{
                         {
                             if(count == 0)
                             {
-                                JOptionPane.showMessageDialog(f, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
                                 ((CustomerCurrentAccount) acc).getAtm().setValid(false);
                                 customer();
                                 loop = false;
@@ -1329,13 +1329,13 @@ public class Menu extends JFrame{
                                 if(checkPin == i)
                                 {
                                     loop = false;
-                                    JOptionPane.showMessageDialog(f, "Pin entry successful" ,  "Pin", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Pin entry successful" ,  "Pin", JOptionPane.INFORMATION_MESSAGE);
 
                                 }
                                 else
                                 {
                                     count --;
-                                    JOptionPane.showMessageDialog(f, "Incorrect pin. " + count + " attempts remaining."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Incorrect pin. " + count + " attempts remaining."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
 
                                 }
 
@@ -1353,16 +1353,16 @@ public class Menu extends JFrame{
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                         }
                         if(withdraw > 500)
                         {
-                            JOptionPane.showMessageDialog(f, "500 is the maximum you can withdraw at a time." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "500 is the maximum you can withdraw at a time." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                             withdraw = 0;
                         }
                         if(withdraw > acc.getBalance())
                         {
-                            JOptionPane.showMessageDialog(f, "Insufficient funds." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Insufficient funds." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                             withdraw = 0;
                         }
 
@@ -1380,8 +1380,8 @@ public class Menu extends JFrame{
                         acc.getTransactionList().add(transaction);
 
 
-                        JOptionPane.showMessageDialog(f, withdraw + euro + " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, euro  + withdraw +  " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "New balance = " + euro + acc.getBalance()  ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
                     }
                 });
 
