@@ -222,7 +222,7 @@ public class Menu extends JFrame{
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))//search customer list for matching customer ID
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))//search customer list for matching customer ID
                         {
                             found = true;
                             customer = aCustomer;
@@ -363,9 +363,13 @@ public class Menu extends JFrame{
 
         bankChargesButton.addActionListener(ae -> {
 
+            loop = true;
+
+            found = false;
+
             if(customerList.isEmpty())
             {
-                JOptionPane.showMessageDialog(null, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(f, "There are no customers yet!"  ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
                 f.dispose();
                 admin();
 
@@ -374,11 +378,11 @@ public class Menu extends JFrame{
             {
                 while(loop)
                 {
-                    Object customerID = JOptionPane.showInputDialog(null, "Customer ID of Customer You Wish to Apply Charges to:");
+                    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Charges to:");
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                         {
                             found = true;
                             customer = aCustomer;
@@ -399,7 +403,14 @@ public class Menu extends JFrame{
                     }
                     else
                     {
-                       fdispose();
+                        f.dispose();
+                        f = new JFrame("Administrator Menu");
+                        f.setSize(400, 300);
+                        f.setLocation(200, 200);
+                        f.addWindowListener(new WindowAdapter() {
+                            public void windowClosing(WindowEvent we) { System.exit(0); }
+                        });
+                        f.setVisible(true);
 
 
                         JComboBox<String> box = new JComboBox<>();
@@ -491,7 +502,7 @@ public class Menu extends JFrame{
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                         {
                             found = true;
                             customer = aCustomer;
@@ -512,7 +523,14 @@ public class Menu extends JFrame{
                     }
                     else
                     {
-                       fdispose();
+                        f.dispose();
+                        f = new JFrame("Administrator Menu");
+                        f.setSize(400, 300);
+                        f.setLocation(200, 200);
+                        f.addWindowListener(new WindowAdapter() {
+                            public void windowClosing(WindowEvent we) { System.exit(0); }
+                        });
+                        f.setVisible(true);
 
 
                         JComboBox<String> box = new JComboBox<>();
@@ -614,7 +632,7 @@ public class Menu extends JFrame{
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                         {
                             found = true;
                             customer = aCustomer;
@@ -872,7 +890,7 @@ public class Menu extends JFrame{
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                         {
                             found = true;
                             customer = aCustomer;
@@ -955,7 +973,7 @@ public class Menu extends JFrame{
 
                     for (Customer aCustomer: customerList){
 
-                        if(aCustomer.getCustomerID().equals(customerID))
+                        if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                         {
                             found = true;
                             customer = aCustomer;
@@ -994,7 +1012,7 @@ public class Menu extends JFrame{
 
                 for (Customer aCustomer: customerList){
 
-                    if(aCustomer.getCustomerID().equals(customerID))
+                    if(aCustomer.getCustomerID().equalsIgnoreCase((String) customerID))
                     {
                         found = true;
                         customer = aCustomer;
@@ -1022,17 +1040,7 @@ public class Menu extends JFrame{
             menuStart();
         });
     }
-    private void fdispose(){
-        f.dispose();
-        f = new JFrame("Administrator Menu");
-        f.setSize(400, 300);
-        f.setLocation(200, 200);
-        f.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent we) { System.exit(0); }
-        });
-        f.setVisible(true);
 
-    }
 
     private void setCustomer() {
         firstNameTextField.setText(customerList.get(position).getFirstName());
